@@ -8,6 +8,7 @@
       body {
         font-family: Arial, sans-serif;
         background: #f2f2f2;
+        -webkit-print-color-adjust: exact;
       }
 
       .export-btn {
@@ -20,12 +21,18 @@
         border-radius: 5px;
       }
 
+      /* ===== CHUẨN A4 ===== */
       .container {
-        width: 900px;
-        margin: 20px auto;
+        width: 210mm;
+        height: 297mm;
+        margin: auto;
         background: white;
         display: flex;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+      }
+
+      * {
+        box-sizing: border-box;
       }
 
       .left {
@@ -97,7 +104,7 @@
         margin-top: 5px;
       }
 
-      /* Ẩn nút khi in/pdf */
+      /* Ẩn nút khi xuất PDF */
       @media print {
         .export-btn {
           display: none;
@@ -123,17 +130,16 @@
           <p><b>Số điện thoại</b><br />0823733234</p>
           <p><b>Email</b><br />anhmau74@gmail.com</p>
           <p>
-            <b>Địa chỉ</b><br />Kiệt 54, đường Nguyễn Công Trứ,<br />Sơn Trà, Đà
-            Nẵng
+            <b>Địa chỉ</b><br />Kiệt 54, Nguyễn Công Trứ,<br />Sơn Trà, Đà Nẵng
           </p>
         </div>
 
         <div class="section-title">Mục tiêu nghề nghiệp</div>
         <p>
-          Ngắn hạn: Có một công việc ổn định, tích lũy thêm nhiều kinh nghiệm,
-          rèn luyện kỹ năng xử lý công việc hiệu quả, chính xác, nhanh chóng.
+          Ngắn hạn: Có công việc ổn định, tích lũy kinh nghiệm, nâng cao kỹ năng
+          xử lý công việc nhanh và chính xác.
         </p>
-        <p>Dài hạn: Có cơ hội được làm nhân viên chính thức của công ty.</p>
+        <p>Dài hạn: Trở thành nhân viên chính thức và phát triển lâu dài.</p>
       </div>
 
       <div class="right">
@@ -148,10 +154,10 @@
           </div>
           <p>Nhân viên: Tư vấn bán hàng</p>
           <ul>
-            <li>Giới thiệu và tư vấn các loại trà Phổ Nhĩ cho khách đoàn.</li>
-            <li>Hỗ trợ khách trải nghiệm và tìm hiểu về sản phẩm trà.</li>
-            <li>Sắp xếp trưng bày và kiểm tra hàng hóa tại cửa hàng.</li>
-            <li>Dọn dẹp khu vực bán hàng luôn gọn gàng.</li>
+            <li>Giới thiệu và tư vấn trà Phổ Nhĩ cho khách.</li>
+            <li>Hỗ trợ trải nghiệm sản phẩm.</li>
+            <li>Sắp xếp và kiểm tra hàng hóa.</li>
+            <li>Giữ khu vực bán hàng gọn gàng.</li>
           </ul>
         </div>
 
@@ -161,26 +167,22 @@
           </div>
           <p>Nhân viên: Trợ lý tiếng Trung</p>
           <ul>
-            <li>
-              Phiên dịch các cuộc họp, truyền đạt yêu cầu từ lãnh đạo đến nhân
-              viên.
-            </li>
-            <li>Đi thị trường khảo sát cùng lãnh đạo.</li>
-            <li>Hoàn thành các công việc khác.</li>
+            <li>Phiên dịch cuộc họp.</li>
+            <li>Truyền đạt chỉ đạo từ lãnh đạo.</li>
+            <li>Khảo sát thị trường.</li>
           </ul>
         </div>
 
         <div class="job-item">
           <div class="company">
-            CÔNG TY TNHH MÁY VÀ THIẾT BỊ XCMG
-            <span class="time">07/2020 - 10/2023</span>
+            CÔNG TY XCMG <span class="time">07/2020 - 10/2023</span>
           </div>
           <p>Nhân viên: Hành chính nhân sự</p>
           <ul>
-            <li>Tuyển dụng, đánh giá nhân sự.</li>
-            <li>Phiên dịch, chấm công, quản lý kho.</li>
-            <li>Giải quyết thắc mắc khách hàng.</li>
-            <li>Thống kê và gửi bảng lương.</li>
+            <li>Tuyển dụng và quản lý nhân sự.</li>
+            <li>Chấm công, quản lý kho.</li>
+            <li>Giải đáp khách hàng.</li>
+            <li>Lập bảng lương.</li>
           </ul>
         </div>
 
@@ -188,24 +190,22 @@
           <div class="company">
             CÔNG TY BẢO CHÂU <span class="time">02/2019 - 01/2020</span>
           </div>
-          <p>Nhân viên: Bán hàng (Tiếng Trung)</p>
+          <p>Nhân viên: Bán hàng</p>
           <ul>
-            <li>Chào đón và tư vấn khách hàng.</li>
-            <li>Giải đáp thắc mắc.</li>
+            <li>Tư vấn và chăm sóc khách.</li>
             <li>Kiểm kê hàng hóa.</li>
           </ul>
         </div>
 
         <div class="title">Trình độ học vấn</div>
-        <p><b>Khoa Du Lịch - Đại học Huế</b> (2014 - 2018)</p>
-        <p>Chuyên ngành: Quản lý lữ hành</p>
-        <p>Bằng tốt nghiệp: Loại Khá</p>
+        <p><b>Đại học Huế</b> (2014 - 2018)</p>
+        <p>Ngành: Quản lý lữ hành</p>
 
-        <div class="title">Kỹ năng mềm</div>
+        <div class="title">Kỹ năng</div>
         <ul>
-          <li>Làm việc nhóm và độc lập.</li>
-          <li>Thích ứng nhanh.</li>
-          <li>Xử lý tình huống tốt.</li>
+          <li>Làm việc nhóm / độc lập</li>
+          <li>Thích ứng nhanh</li>
+          <li>Xử lý tình huống tốt</li>
         </ul>
       </div>
     </div>
@@ -213,16 +213,17 @@
     <!-- Thư viện -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
+    <!-- Script export -->
     <script>
       function downloadPDF() {
         const element = document.querySelector(".container");
 
         const opt = {
-          margin: 5,
+          margin: 0,
           filename: "CV_Nguyen_Thi_Anh_Mau.pdf",
           image: { type: "jpeg", quality: 1 },
           html2canvas: {
-            scale: 2,
+            scale: 1,
             useCORS: true
           },
           jsPDF: {
@@ -236,4 +237,4 @@
       }
     </script>
   </body>
-</html>
+              </html>
