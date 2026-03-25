@@ -3,10 +3,21 @@
   <head>
     <meta charset="UTF-8" />
     <title>CV Nguyễn Thị Ánh Mầu</title>
+
     <style>
       body {
         font-family: Arial, sans-serif;
         background: #f2f2f2;
+      }
+
+      .export-btn {
+        margin: 20px;
+        padding: 10px 20px;
+        cursor: pointer;
+        background: #27ae80;
+        color: white;
+        border: none;
+        border-radius: 5px;
       }
 
       .container {
@@ -85,13 +96,27 @@
       ul {
         margin-top: 5px;
       }
+
+      /* Ẩn nút khi in/pdf */
+      @media print {
+        .export-btn {
+          display: none;
+        }
+      }
     </style>
   </head>
 
   <body>
+    <!-- Nút xuất PDF -->
+    <button class="export-btn" onclick="downloadPDF()">Xuất PDF</button>
+
     <div class="container">
       <div class="left">
-       <img src="https://raw.githubusercontent.com/truongson2k/cv_NguyenThiAnhMau/main/cv.jpg" alt="Ảnh đại diện" />        
+        <img
+          src="https://raw.githubusercontent.com/truongson2k/cv_NguyenThiAnhMau/main/cv.jpg"
+          alt="Ảnh đại diện"
+        />
+
         <div class="info">
           <p><b>Ngày sinh</b><br />30/09/1996</p>
           <p><b>Giới tính</b><br />Nữ</p>
@@ -137,11 +162,11 @@
           <p>Nhân viên: Trợ lý tiếng Trung</p>
           <ul>
             <li>
-              Công việc chủ yếu phiên dịch các cuộc họp, truyền đạt yêu cầu và
-              chỉ đạo của lãnh đạo đến các nhân viên khác.
+              Phiên dịch các cuộc họp, truyền đạt yêu cầu từ lãnh đạo đến nhân
+              viên.
             </li>
             <li>Đi thị trường khảo sát cùng lãnh đạo.</li>
-            <li>Hoàn thành các công việc khác lãnh đạo giao phó.</li>
+            <li>Hoàn thành các công việc khác.</li>
           </ul>
         </div>
 
@@ -152,12 +177,10 @@
           </div>
           <p>Nhân viên: Hành chính nhân sự</p>
           <ul>
-            <li>
-              Chịu trách nhiệm tuyển dụng, đánh giá và phổ biến chế độ đãi ngộ.
-            </li>
-            <li>Phiên dịch, kế toán kho, chấm công nhân viên.</li>
-            <li>Giải quyết các yêu cầu thắc mắc của khách hàng.</li>
-            <li>Thống kê sản phẩm trong kho và gửi bảng lương cuối tháng.</li>
+            <li>Tuyển dụng, đánh giá nhân sự.</li>
+            <li>Phiên dịch, chấm công, quản lý kho.</li>
+            <li>Giải quyết thắc mắc khách hàng.</li>
+            <li>Thống kê và gửi bảng lương.</li>
           </ul>
         </div>
 
@@ -167,38 +190,50 @@
           </div>
           <p>Nhân viên: Bán hàng (Tiếng Trung)</p>
           <ul>
-            <li>Chào đón và giới thiệu sản phẩm cho khách.</li>
-            <li>Giải đáp các thắc mắc của khách hàng.</li>
-            <li>Kiểm tra hàng cuối ngày và thống kê cuối tháng.</li>
+            <li>Chào đón và tư vấn khách hàng.</li>
+            <li>Giải đáp thắc mắc.</li>
+            <li>Kiểm kê hàng hóa.</li>
           </ul>
         </div>
-
-        <!-- <div class="job-item">
-          <div class="company">
-            GALINA MUD BATH AND SPA <span class="time">08/2018 - 01/2019</span>
-          </div>
-          <p>Nhân viên: Lễ tân / tư vấn dịch vụ</p>
-          <ul>
-            <li>Tiếp đón và tư vấn dịch vụ cho khách.</li>
-            <li>Sắp xếp kỹ thuật viên thực hiện dịch vụ.</li>
-            <li>Hỗ trợ giải đáp thắc mắc của khách.</li>
-            <li>Kết toán và kiểm tra doanh thu cuối ngày.</li>
-          </ul>
-        </div> -->
 
         <div class="title">Trình độ học vấn</div>
         <p><b>Khoa Du Lịch - Đại học Huế</b> (2014 - 2018)</p>
         <p>Chuyên ngành: Quản lý lữ hành</p>
         <p>Bằng tốt nghiệp: Loại Khá</p>
-        <p>Thẻ hướng dẫn viên Tiếng Trung</p>
 
         <div class="title">Kỹ năng mềm</div>
         <ul>
-          <li>Khả năng làm việc độc lập và làm việc nhóm.</li>
-          <li>Thích ứng nhanh với môi trường, ham học hỏi.</li>
-          <li>Khả năng bao quát công việc và xử lý tình huống linh hoạt.</li>
+          <li>Làm việc nhóm và độc lập.</li>
+          <li>Thích ứng nhanh.</li>
+          <li>Xử lý tình huống tốt.</li>
         </ul>
       </div>
     </div>
+
+    <!-- Thư viện -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+    <script>
+      function downloadPDF() {
+        const element = document.querySelector(".container");
+
+        const opt = {
+          margin: 5,
+          filename: "CV_Nguyen_Thi_Anh_Mau.pdf",
+          image: { type: "jpeg", quality: 1 },
+          html2canvas: {
+            scale: 2,
+            useCORS: true
+          },
+          jsPDF: {
+            unit: "mm",
+            format: "a4",
+            orientation: "portrait"
+          }
+        };
+
+        html2pdf().set(opt).from(element).save();
+      }
+    </script>
   </body>
 </html>
